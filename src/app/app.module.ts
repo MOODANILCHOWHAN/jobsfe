@@ -10,6 +10,9 @@ import { JobsDetailsComponent } from './jobs-details/jobs-details.component';
 import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { DaysAgoPipe } from './days-ago.pipe';
 import { AlignItemCenterDirective } from './align-item-center.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { AlignItemCenterDirective } from './align-item-center.directive';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgbPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

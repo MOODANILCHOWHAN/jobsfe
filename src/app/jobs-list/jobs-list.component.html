@@ -4,7 +4,7 @@
       <div class=" col-12 jobs-group">
         @for(i of jobList; track i){
         <section class="col-11 jobs-section" >
-          <div class="col-9  job-detail">
+          <div class="col-8  job-detail">
             <div>
               <img [src]="i.image ? i.image:'assets/Home/calendar.png'" style="width: 3rem; height: 3rem;">
             </div>
@@ -38,6 +38,8 @@
         </section>
         }
       </div>
+      <br>
+        <ngb-pagination class="d-flex justify-content-center" [collectionSize]="70" [(page)]="page"  (pageChange)="onPageChange($event)"/>
     </ng-container>
     <ng-template #noJobs>
         <p>No jobs found.</p>
