@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { environment } from '../../environment/environment';
+import { JobServicesService } from '../services/job-services.service';
 @Component({
   selector: 'app-jobs-details',
   templateUrl: './jobs-details.component.html',
@@ -10,13 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 export class JobsDetailsComponent {
 
   jobDetails:any;
-  constructor(private http:HttpClient,private params:ActivatedRoute){
+  constructor(private jobService:JobServicesService,private params:ActivatedRoute){
    
   }
 
   ngOnInit(): void {
     this.readParams();
-    console.log('hello')
+    console.log('hello');
+  
   }
 
   readParams() {
@@ -25,6 +27,11 @@ export class JobsDetailsComponent {
         const id = res.get('id'); // ✅ use .get('id') to retrieve the value
         console.log('ID:', id);
         this.getDetails(id); // pass the actual string ID
+        this.jobService.getSuggestions(id).subscribe({
+          next:(res)=>{
+            console.log(res)
+          }
+        })
       },
       error: (err) => {
         console.log('Error:', err);
@@ -43,8 +50,7 @@ export class JobsDetailsComponent {
     })
   }
   getDetails(filter:any){
-    const api=`https://jobs-ut20.onrender.com/getJob/${filter}`
-    this.http.get<any>(api).subscribe({
+    this.jobService.getJobDetails(filter).subscribe({
       next:(res)=>{
         console.log(res);
         this.jobDetails=res;
