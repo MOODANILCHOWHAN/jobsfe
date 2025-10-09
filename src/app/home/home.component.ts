@@ -17,7 +17,7 @@ export class HomeComponent {
   
     }
     ngOnInit(): void {
-    //  this.getJobs();
+     this.getJobs();
     }
     
     getJobs(){
@@ -25,7 +25,7 @@ export class HomeComponent {
       this.http.get<any>(api).subscribe({
         next:(res)=>{
           console.log(res);
-          this.jobs=res?.jobs.slice(0,2);
+          this.jobs=res?.jobs.slice(0,3);
         },error:(err)=>{
           console.error(err)
         }

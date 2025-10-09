@@ -1,3 +1,16 @@
+@import '../../assets/style/particals';
 .category{
+    
     justify-content: space-between !important;
+    @include mQ(500px){
+        width: 95% !important;
+        margin: 0.5rem;
+    }
+}
+.job-card-div{
+    display: flex;
+    flex-direction: row;
+    @include mQ(500px){
+        flex-direction: column;
+    }
 }
