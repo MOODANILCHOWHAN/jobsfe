@@ -18,22 +18,27 @@
             </span>
     </div>
     <div>
+        <div appAlignItemCenter class="category">
+          <b>IT JobS</b><span (click)="viewAll('it')">View All</span>
+        </div>
         @for( i of jobs ;track i){
-            <div (click)="getDetails(i)">
-                <div>
-                    <img [src]="i.image">
-                </div>
-                <div>
-                    <span>{{i.jobName}}</span>
-                    <span>{{i.company}}</span>
-                    <span>
-                        <span>{{i.experince >0 ? i.experince : 'Fresher'}}</span>
-                        @if(i.fullTime){
-                        <span>{{i.fullTime}}</span>
-                        }
-                    </span>
-                </div>
-            </div>
+            <app-job-card [job]="i"></app-job-card>
+        }
+    </div>
+    <div>
+        <div appAlignItemCenter class="category">
+          <b>  NON-IT JobS</b><span (click)="viewAll('nonit')">View All</span>
+        </div>
+        @for( i of jobs ;track i){
+           <app-job-card [job]="i"></app-job-card>
+        }
+    </div>
+    <div>
+        <div appAlignItemCenter class="category">
+          <b>Retail Jobs</b><span (click)="viewAll('retail')">View All</span>
+        </div>
+        @for( i of jobs ;track i){
+           <app-job-card [job]="i"></app-job-card>
         }
     </div>
 </div>

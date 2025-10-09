@@ -13,6 +13,7 @@ import { AlignItemCenterDirective } from './align-item-center.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { JobCardComponent } from './components/job-card/job-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     JobsDetailsComponent,
     JobsListComponent,
     DaysAgoPipe,
-    AlignItemCenterDirective
+    AlignItemCenterDirective,
+    JobCardComponent
   ],
   imports: [
     BrowserModule,

@@ -38,7 +38,7 @@ export class JobsListComponent implements OnInit,OnDestroy {
     this.http.get<any>(url).subscribe({
       next:(res)=>{
         console.log(res)
-        this.jobList=res;
+        this.jobList=res?.jobs;
       }
     })
   }

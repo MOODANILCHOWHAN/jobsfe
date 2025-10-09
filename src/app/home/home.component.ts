@@ -17,15 +17,15 @@ export class HomeComponent {
   
     }
     ngOnInit(): void {
-     this.getJobs();
+    //  this.getJobs();
     }
     
     getJobs(){
-      const api='https://jobs-ut20.onrender.com/getAllJobs'
+      const api='https://jobs-ut20.onrender.com/getAllJobs/1'
       this.http.get<any>(api).subscribe({
         next:(res)=>{
           console.log(res);
-          this.jobs=res;
+          this.jobs=res?.jobs.slice(0,2);
         },error:(err)=>{
           console.error(err)
         }
@@ -36,5 +36,8 @@ export class HomeComponent {
     }
     getDetails(element:any){
       this.route.navigate(['',element.id])
+    }
+    viewAll(cat:string){
+      this.route.navigate(['',cat]);
     }
 }

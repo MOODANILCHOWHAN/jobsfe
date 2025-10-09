@@ -1,0 +1,39 @@
+<ng-container   >
+    <div class=" col-12 jobs-group">
+      <section class="col-11 jobs-section" >
+        <div class="col-8  job-detail">
+          <div>
+            <img [src]="job.image ? job.image:'assets/Home/calendar.png'" style="width: 3rem; height: 3rem;">
+          </div>
+          <div>
+              <span class="text-bolder">{{job.jobName}}</span>
+              <br>
+              <span class="text-bold">{{job.company}}</span>
+              <br>
+              <div class="details">
+                <div class="d-flex align-items-center gap-1">
+                  <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">location_on</span>
+                  <span>{{job.location}}</span>
+                </div>
+                <div class="d-flex align-items-center gap-1">
+                  <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">schedule</span>
+                  <span>{{job.jobType}}</span>
+                </div>
+                <div class="d-flex align-items-center gap-1">
+                  <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">work_history</span>
+                  <span>{{job.jobExperience < 2 ? 'Fresher' : 'Experience' }}</span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        <div class=" job-detail apply">
+          <!-- <button (click)="navToDescription(i)" class="pointer">Apply now</button> -->
+          
+          <span>{{job.createdAt | daysAgo}}</span>
+        </div>
+      </section>
+      
+    </div>
+    <br>
+ </ng-container>
