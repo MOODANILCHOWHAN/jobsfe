@@ -11,9 +11,11 @@ import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { DaysAgoPipe } from './days-ago.pipe';
 import { AlignItemCenterDirective } from './align-item-center.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { JobCardComponent } from './components/job-card/job-card.component';
+import { SearchHeaderComponent } from './components/search-header/search-header.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { JobCardComponent } from './components/job-card/job-card.component';
     JobsListComponent,
     DaysAgoPipe,
     AlignItemCenterDirective,
-    JobCardComponent
+    JobCardComponent,
+    SearchHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { JobCardComponent } from './components/job-card/job-card.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

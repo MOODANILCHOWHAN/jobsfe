@@ -1,0 +1,16 @@
+<div>
+    <form  [formGroup]="filter">
+    <select formControlName="type" placeholder="select">
+        <option value="" disabled selected>Select the filter</option>
+        <option value="skill">Skill</option>
+        <option value="city">City</option>
+        <option value="remote">Remote</option>
+        <option value="industry">Industry</option>
+        <option value="company">Company</option>
+    </select>
+    <input type="text" formControlName="term">
+    <span class="material-symbols-outlined" (click)="applyFilter()">
+        search
+    </span>
+</form>
+</div>
