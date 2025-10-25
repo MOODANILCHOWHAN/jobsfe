@@ -1,21 +1,8 @@
-<p>home works!</p>
-<div>
-    <div class="header navbar text-center">
-        <!-- Latest Jobs are -->
-    </div>
+
+<div class="main-container">
+    
     <div>
-        <select [(ngModel)]="filter">
-            <option value="" disabled selected>Select the filter</option>
-            <option value="skill">Skill</option>
-            <option value="city">City</option>
-            <option value="remote">Remote</option>
-            <option value="industry">Industry</option>
-            <option value="company">Company</option>
-        </select>
-        <input type="text" [(ngModel)]="searchText">
-        <span class="material-symbols-outlined" (click)="applyFilter()">
-            search
-        </span>
+       <app-search-header></app-search-header>
     </div>
     <div>
         <div appAlignItemCenter class="category">

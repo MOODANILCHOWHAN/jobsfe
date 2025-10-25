@@ -1,16 +1,20 @@
-<div>
-    <form  [formGroup]="filter">
-    <select formControlName="type" placeholder="select">
-        <option value="" disabled selected>Select the filter</option>
-        <option value="skill">Skill</option>
-        <option value="city">City</option>
-        <option value="remote">Remote</option>
-        <option value="industry">Industry</option>
-        <option value="company">Company</option>
-    </select>
-    <input type="text" formControlName="term">
-    <span class="material-symbols-outlined" (click)="applyFilter()">
-        search
-    </span>
-</form>
+<div appAlignItemCenter>
+    <form [formGroup]="filter">
+        <select formControlName="type" placeholder="select" class="border fieldss" (change)="selected()">
+            <!-- <option value="" disabled selected>Select the filter</option> -->
+            <option value="Job">Job</option>
+            <!-- <option value="city">City</option> -->
+            <option value="remote">Remote</option>
+            <!-- <option value="industry">Industry</option> -->
+            <option value="company">Company</option>
+        </select>
+        <input type="text" class="border fieldss" formControlName="term" [attr.placeholder]="'Enter ' + filter.value.type">
+        @if(windowWidth > 500){
+        <input type="text" class="border fieldss" formControlName="location" placeholder="location">
+        }
+        <button class="border fieldss"><span class="material-symbols-outlined" (click)="applyFilter()">
+                search
+            </span>
+        </button>
+    </form>
 </div>

@@ -9,4 +9,5 @@ body{
     @include mQ(500px){
         padding: 1rem 0.5rem;
     }
+    overflow-x: hidden;
 }

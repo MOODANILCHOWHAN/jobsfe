@@ -6,10 +6,10 @@ import { JobsDetailsComponent } from './jobs-details/jobs-details.component';
 import { SearchHeaderComponent } from './components/search-header/search-header.component';
 
 const routes: Routes = [
-  { path: 'jobsList', component: HomeComponent },
-  {path:'search',component:JobsListComponent},
+  { path: '', component: HomeComponent },
+  {path:'jobsList',component:JobsListComponent},
   {path:'jobdetails/:id',component:JobsDetailsComponent},
-  {path:'',component:SearchHeaderComponent}
+  // {path:'jobsList',component:SearchHeaderComponent}
 ];
 
 @NgModule({

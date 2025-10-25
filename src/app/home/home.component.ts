@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError, forkJoin, of } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 @Component({
   selector: 'app-home',
@@ -21,23 +23,26 @@ export class HomeComponent {
     }
     
     getJobs(){
-      const api='https://jobs-ut20.onrender.com/getAllJobs/1'
-      this.http.get<any>(api).subscribe({
-        next:(res)=>{
-          console.log(res);
-          this.jobs=res?.jobs.slice(0,3);
-        },error:(err)=>{
-          console.error(err)
-        }
+      const itJobs=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
+      const nonITJobs=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
+      const retail=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
+      forkJoin([
+        itJobs.pipe(catchError(err=>of({error:true,details:err,api:'it'}))),
+        nonITJobs.pipe(catchError(err=>of({error:true,details:err,api:'nonIt'}))),
+        retail.pipe(catchError(err=>of({error:true,details:err,api:'retail'})))
+      ]).subscribe({
+       next:(res)=>{
+        console.log(res);
+       },error:(err)=>{
+        console.log(err);
+       }
       })
     }
-    applyFilter(){
-      this.route.navigate([''],{queryParams:{filter:this.filter,text:this.searchText}})
-    }
+    
     getDetails(element:any){
       this.route.navigate(['',element.id])
     }
     viewAll(cat:string){
-      this.route.navigate(['',cat]);
+      this.route.navigate(['jobsList'],{queryParams:{category:cat}});
     }
 }

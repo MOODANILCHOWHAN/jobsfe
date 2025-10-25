@@ -1,8 +1,11 @@
 @import '../../assets/style/particals';
+.main-container{
+    overflow-x: hidden;
+}
 .category{
     
     justify-content: space-between !important;
-    margin: 0.5rem;
+    padding: 0.5rem;
     @include mQ(500px){
         width: 95% !important;
         
