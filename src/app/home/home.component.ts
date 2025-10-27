@@ -14,6 +14,7 @@ export class HomeComponent {
     filter:any='';
     searchText:any='';
     jobs:any=[];
+    loading:boolean=false;
     constructor(private http:HttpClient,private route:Router)
     {
   
@@ -23,6 +24,7 @@ export class HomeComponent {
     }
     
     getJobs(){
+      this.loading=true;
       const itJobs=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
       const nonITJobs=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
       const retail=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
@@ -32,6 +34,7 @@ export class HomeComponent {
         retail.pipe(catchError(err=>of({error:true,details:err,api:'retail'})))
       ]).subscribe({
        next:(res)=>{
+        this.loading=false;
         console.log(res);
        },error:(err)=>{
         console.log(err);
