@@ -10,12 +10,12 @@
         </div>
         <div class="job-card-div">
             
-            @if (!loading) {
+            @if (loading) {
               @for (i of [1, 2, 3]; track i) {
                 <div class="shimmer"></div>
               }
             } @else {
-              @for (i of jobs; track i) {
+              @for (i of itJobs; track i) {
                 <app-job-card [job]="i"></app-job-card>
               }
             }
@@ -26,12 +26,12 @@
             <b> NON-IT JobS</b><span (click)="viewAll('nonit')">View All</span>
         </div>
         <div class="job-card-div">
-            @if (!loading) {
+            @if (loading) {
                 @for (i of [1, 2, 3]; track i) {
                   <div class="shimmer"></div>
                 }
               } @else {
-                @for (i of jobs; track i) {
+                @for (i of nonItJobs; track i) {
                   <app-job-card [job]="i"></app-job-card>
                 }
               }
@@ -42,12 +42,12 @@
             <b>Retail Jobs</b><span (click)="viewAll('retail')">View All</span>
         </div>
         <div class="job-card-div">
-            @if (!loading) {
+            @if (loading) {
                 @for (i of [1, 2, 3]; track i) {
                   <div class="shimmer"></div>
                 }
               } @else {
-                @for (i of jobs; track i) {
+                @for (i of retailJobs; track i) {
                   <app-job-card [job]="i"></app-job-card>
                 }
               }

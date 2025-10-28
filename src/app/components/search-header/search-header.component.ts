@@ -16,7 +16,7 @@ export class SearchHeaderComponent implements OnDestroy{
     this.windowWidth=window.innerWidth;
     window.addEventListener('resize',this.resizeWidth, true);
     this.filter = this.fb.group({
-      type: ['Job', Validators.required],
+      type: ['job', Validators.required],
       term: ['', Validators.required],
       location:['']
     });
@@ -34,7 +34,10 @@ export class SearchHeaderComponent implements OnDestroy{
     }
   }
   applyFilter(){
-    this.route.navigate(['jobsList'],{queryParams:{filter:this.filter.value.type,text:this.filter.value.term}})
+    const a=this.filter.value.type
+    const q={[a]:this.filter.value.term};
+    console.log(q)
+    this.route.navigate(['jobsList'],{queryParams:q})
   }
   ngOnDestroy(): void {
     window.removeEventListener('resize',this.resizeWidth,true)

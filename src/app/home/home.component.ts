@@ -13,7 +13,9 @@ export class HomeComponent {
   
     filter:any='';
     searchText:any='';
-    jobs:any=[];
+    itJobs:any=[];
+    nonItJobs:any=[];
+    retailJobs:any=[];
     loading:boolean=false;
     constructor(private http:HttpClient,private route:Router)
     {
@@ -25,9 +27,9 @@ export class HomeComponent {
     
     getJobs(){
       this.loading=true;
-      const itJobs=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
-      const nonITJobs=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
-      const retail=this.http.get<any>(`${environment.dominUrl}getAllJobs/1`);
+      const itJobs=this.http.get<any>(`${environment.dominUrl}getJobByInd/it`);
+      const nonITJobs=this.http.get<any>(`${environment.dominUrl}getJobByInd/nonit`);
+      const retail=this.http.get<any>(`${environment.dominUrl}getJobByInd/retail`);
       forkJoin([
         itJobs.pipe(catchError(err=>of({error:true,details:err,api:'it'}))),
         nonITJobs.pipe(catchError(err=>of({error:true,details:err,api:'nonIt'}))),
@@ -36,6 +38,9 @@ export class HomeComponent {
        next:(res)=>{
         this.loading=false;
         console.log(res);
+        this.itJobs=res[0].jobs;
+        this.nonItJobs=res[1].jobs;
+        this.retailJobs=res[2].jobs;
        },error:(err)=>{
         console.log(err);
        }
@@ -46,6 +51,6 @@ export class HomeComponent {
       this.route.navigate(['',element.id])
     }
     viewAll(cat:string){
-      this.route.navigate(['jobsList'],{queryParams:{category:cat}});
+      this.route.navigate(['jobsList'],{queryParams:{industryType:cat}});
     }
 }

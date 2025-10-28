@@ -11,6 +11,9 @@ import { Subscription } from 'rxjs';
 export class JobsListComponent implements OnInit,OnDestroy {
   jobList:any[]=[];
   page:any;
+  industryType:any;
+  location:any;
+  jobName:any;company:any;remote:any;
   routeSubscription:Subscription | undefined;
   constructor(private http:HttpClient, private readonly router:Router,
               private routerPa:ActivatedRoute){
@@ -18,24 +21,34 @@ export class JobsListComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-   
-    this.routeSubscription=  this.routerPa.queryParamMap.subscribe(res=>{
-      console.log(res);
-      const pageParam=res.get('page');
-      this.page=pageParam?pageParam:1;
-      this.getJobs(this.page);
-    })
+   this.setingQueryParams();
   }
 
+  setingQueryParams(){
+
+    this.routeSubscription=  this.routerPa.queryParamMap.subscribe(res=>{
+      console.log(res);
+      const pageParam=res;
+
+      const qParams={
+       page:pageParam.get('page')?pageParam.get('page'):1,
+       company:pageParam.get('company')?pageParam.get('company'):'',
+      location:pageParam.get('location')?pageParam.get('location'):'',
+      jobName:pageParam.get('job')?pageParam.get('job'):'',
+       industryType:pageParam.get('industryType')?pageParam.get('industryType'):'',
+      }
+      this.getJobs(qParams);
+    })
+  }
   ngOnDestroy(): void {
     if(this.routeSubscription){
       this.routeSubscription.unsubscribe();
     }
   }
-  getJobs(page:number){
-    this.page=page;
-    const url=`https://jobs-ut20.onrender.com/getAllJobs/${this.page}`;
-    this.http.get<any>(url).subscribe({
+  getJobs(page:any){
+    const url=`https://jobs-ut20.onrender.com/getAllJobs`;
+    console.log(url)
+    this.http.get<any>(url,{ params: page }).subscribe({
       next:(res)=>{
         console.log(res)
         this.jobList=res?.jobs;
