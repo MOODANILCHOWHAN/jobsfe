@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-job-card',
@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class JobCardComponent {
 
   @Input() job:any
-  
+  @Input() showBtns:any;
 }

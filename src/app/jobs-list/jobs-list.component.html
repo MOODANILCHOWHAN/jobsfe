@@ -39,7 +39,7 @@
         }
       </div>
       <br>
-        <ngb-pagination class="d-flex justify-content-center" [collectionSize]="70" [(page)]="page"  (pageChange)="onPageChange($event)"/>
+        <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalJobs" [(page)]="page"  (pageChange)="onPageChange($event)"/>
     </ng-container>
     <ng-template #noJobs>
         <p>No jobs found.</p>

@@ -1,4 +1,4 @@
-<div>
+<div class="containers-div">
     <div class="col-11  job-detail">
         <div>
           <img [src]="jobDetails.image ? jobDetails.image:'assets/Home/calendar.png'" style="width: 4rem; height: 4rem;">
@@ -28,9 +28,20 @@
     <div>
         <h4>Description</h4>
         <span>
-            Experience :  {{jobDetails.jobExperience}}
+            <strong>Experience</strong> :  {{jobDetails.jobExperience}} Year
         </span>
+
         <br>
+        <div>
+          @if(jobDetails.skils.length > 0){
+            <strong>Skills :</strong>
+          @for(i of jobDetails.skils; track i){
+            <span>{{i}}
+              @if (i !== jobDetails.skils[jobDetails.skils.length - 1]) {, }
+            </span>
+          }
+        }
+        </div>
         <span>
             {{jobDetails.description}}
         </span>
@@ -49,10 +60,41 @@
                 }
                 @default {
                   <h4>Apply via Website</h4>
-                  <span>Click here</span>
+                  <button>Click here</button>
                 }
               }
               
         }
     </div>
+    <div class="suggestions">
+      @for( job of suggestion; track job){
+        <div class="job-suggestion borderss">
+          <div>
+            <img [src]="job.image ? job.image:'assets/Home/calendar.png'" style="width: 3.5rem; height: 3.5rem;">
+          </div>
+          <div style="width: 160px;">
+              <span class="text-bolder">{{job.jobName}}</span>
+              <br>
+              <span class="text-bold">{{job.company}}</span>
+              <br>
+              <div class="details">
+                <div class="d-flex align-items-center gap-1">
+                  <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">location_on</span>
+                  <span>{{job.location}}</span>
+                </div>
+                <div class="d-flex align-items-center gap-1">
+                  <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">schedule</span>
+                  <span>{{job.jobType}}</span>
+                </div>
+                <div class="d-flex align-items-center gap-1">
+                  <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">work_history</span>
+                  <span>{{job.jobExperience < 2 ? 'Fresher' : 'Experience' }}</span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+      }
+    </div>
+    
 </div>

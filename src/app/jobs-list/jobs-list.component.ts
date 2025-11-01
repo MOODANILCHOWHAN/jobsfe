@@ -13,6 +13,7 @@ export class JobsListComponent implements OnInit,OnDestroy {
   page:any;
   industryType:any;
   location:any;
+  totalJobs:number=0;
   jobName:any;company:any;remote:any;
   routeSubscription:Subscription | undefined;
   constructor(private http:HttpClient, private readonly router:Router,
@@ -52,6 +53,8 @@ export class JobsListComponent implements OnInit,OnDestroy {
       next:(res)=>{
         console.log(res)
         this.jobList=res?.jobs;
+        this.page=res?.currentPage;
+        this.totalJobs=res?.totalJobs        
       }
     })
   }

@@ -11,6 +11,7 @@ import { JobServicesService } from '../services/job-services.service';
 export class JobsDetailsComponent {
 
   jobDetails:any;
+  suggestion:any[]=[];
   constructor(private jobService:JobServicesService,private params:ActivatedRoute){
    
   }
@@ -29,7 +30,8 @@ export class JobsDetailsComponent {
         this.getDetails(id); // pass the actual string ID
         this.jobService.getSuggestions(id).subscribe({
           next:(res)=>{
-            console.log(res)
+            console.log(res);
+            this.suggestion=res;
           }
         })
       },

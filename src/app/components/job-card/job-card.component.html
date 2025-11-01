@@ -27,7 +27,7 @@
               
           </div>
         </div>
-        <div class=" job-detail apply">
+        <div class=" job-detail apply" *ngIf="showBtns">
           <button class="pointer">Apply now</button>
           
           <span>{{job.createdAt | daysAgo}}</span>
