@@ -69,4 +69,8 @@ export class JobsDetailsComponent {
     if (mobileRegex.test(link)) return 'mobile';
     return 'url';
   }
+
+  applyJob(link:any){
+    window.open(link)
+  }
 }

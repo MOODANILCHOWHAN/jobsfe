@@ -1,0 +1,62 @@
+<div>
+    <section>
+        <h1>Post a Job Opening</h1>
+        <p>Fill out the details below to submit the JObs Form.</p>
+    </section>
+    <section>
+        <mat-card>
+            <form [formGroup]="jobsForm">
+                <div>
+                    <label>Job Tittle</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>Company Name</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>Company Name</label>
+                    <select>
+                        <option disabled selected>Select the Job Type</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Contract">Contract</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Industry Type</label>
+                    <select>
+                        <option disabled selected>Select the Industry Type</option>
+                        <option value="IT">IT</option>
+                        <option value="NON-IT">NON-IT</option>
+                        <option value="Retail">Retail</option>
+                    </select>
+                </div>
+                <div>
+                    <label> City</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label> Full Address</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label> Year Of Expernce</label>
+                    <input type="number">
+                </div>
+                <div>
+                    <label>Interview Type</label>
+                    <select>
+                        <option disabled selected>Select Interview Type</option>
+                        <option value="Online">Online</option>
+                        <option value="Walk-In">Walk-In</option>
+                    </select>
+                </div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </form>
+        </mat-card>
+    </section>
+</div>

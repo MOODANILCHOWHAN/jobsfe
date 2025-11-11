@@ -48,7 +48,7 @@
             {{jobDetails.description}}
         </span>
     </div>
-    <div>
+    <div class="apply-section">
         @if(jobDetails.interviewType == 'Walk-In'){
             <h5>Walk-in interview on {{jobDetails.jobDetails}}</h5>
         }
@@ -62,7 +62,7 @@
                 }
                 @default {
                   <h5>Apply via Website</h5>
-                  <button>Click here</button>
+                  <button (click)=applyJob(jobDetails.link)>Click here</button>
                 }
               }
               
@@ -75,6 +75,7 @@
  
     
 </div>
+
 <h4>Related Jobs</h4>
 <div class="suggestions">
   @for( job of suggestion; track job){
