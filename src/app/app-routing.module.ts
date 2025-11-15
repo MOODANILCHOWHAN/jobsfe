@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {path:'jobsList',component:JobsListComponent},
   {path:'jobdetails/:id',component:JobsDetailsComponent},
-  
+  {path:'admin',loadChildren:()=> import ('../app/admin/admin.module').then(m=>m.AdminModule)}
   // {path:'jobsList',component:SearchHeaderComponent}
 ];
 

@@ -8,11 +8,28 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class JobPostingComponent {
 
-  jobsForm:FormGroup<any> | undefined;
+  jobsForm:FormGroup;
+  ;
+  skills = [
+    { _id: '1', name: 'JavaScript' },
+    { _id: '2', name: 'Angular' },
+    { _id: '3', name: 'Node.js' }
+  ];
 
-  constructor(private fb:FormBuilder){
-   this.jobsForm= this.fb.group({
-
-    })
-  }
+  constructor(private fb: FormBuilder) {
+    this.jobsForm = this.fb.group({
+      title: [''],
+      company: [''],
+      jobType: [''],
+      industry: [''],
+      city: [''],
+      address: [''],
+      experience: [''],
+      interviewType: [''],
+      skills: [[]],
+      description: [''],
+      applicationLink: ['']
+    });
+  
+}
 }

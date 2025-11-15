@@ -16,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { JobCardComponent } from './components/job-card/job-card.component';
 import { SearchHeaderComponent } from './components/search-header/search-header.component';
-
+import {MatCardModule} from '@angular/material/card';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,9 +37,13 @@ import { SearchHeaderComponent } from './components/search-header/search-header.
     HttpClientModule,
     NgbModule,
     NgbPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    NgSelectModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

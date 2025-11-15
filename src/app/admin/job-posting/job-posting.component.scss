@@ -1,0 +1,105 @@
+.headingss{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1,p{
+        margin: 0 !important;
+    }
+}
+section {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  
+    mat-card {
+      width: 100%;
+      max-width: 800px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+  
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+  
+        div {
+          display: flex;
+          flex-direction: column;
+  
+          label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+          }
+  
+          input,
+          select,
+          textarea,
+          ng-select {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #fff;
+            transition: border-color 0.3s;
+  
+            &:focus {
+              border-color: #3f51b5;
+              outline: none;
+            }
+          }
+  
+          textarea {
+            resize: vertical;
+            min-height: 100px;
+          }
+  
+          ng-select {
+            ::ng-deep .ng-select-container {
+              border-radius: 6px;
+              border: 1px solid #ccc;
+              padding: 0.5rem;
+            }
+          }
+        }
+  
+        button {
+          align-self: flex-start;
+          padding: 0.75rem 1.5rem;
+          background-color: #3f51b5;
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: #303f9f;
+          }
+        }
+      }
+    }
+  }
+  .mat-mdc-card{
+    background-color: #dbd8d8 !important;
+  }
+  ng-select {
+    width: 100%;
+  
+    ::ng-deep .ng-select-container {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      min-height: 40px;
+    }
+  
+    ::ng-deep .ng-dropdown-panel {
+      z-index: 1000 !important; // ensures dropdown floats above other fields
+      position: absolute !important;
+      background-color:white ;
+      padding: 0.3rem;
+      width: 80%;
+    }
+  }
