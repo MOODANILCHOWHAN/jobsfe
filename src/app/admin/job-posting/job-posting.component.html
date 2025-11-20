@@ -5,10 +5,10 @@
     </div>
     <section>
         <mat-card style="border-color: aliceblue;">
-          <form [formGroup]="jobsForm">
+          <form [formGroup]="jobsForm" (submit)="addJob()">
             <div>
               <label>Job Title</label>
-              <input type="text" formControlName="title" />
+              <input type="text" formControlName="jobName" />
             </div>
       
             <div>
@@ -28,7 +28,7 @@
       
             <div>
               <label>Industry Type</label>
-              <select formControlName="industry">
+              <select formControlName="industryType">
                 <option disabled selected>Select the Industry Type</option>
                 <option value="IT">IT</option>
                 <option value="NON-IT">NON-IT</option>
@@ -43,12 +43,12 @@
       
             <div>
               <label>Full Address</label>
-              <input type="text" formControlName="address" />
+              <input type="text" formControlName="location" />
             </div>
       
             <div>
               <label>Years of Experience</label>
-              <input type="number" formControlName="experience" />
+              <input type="number" formControlName="jobExperience" />
             </div>
       
             <div>
@@ -63,10 +63,7 @@
             <div>
               <label>Required Skills</label>
               <ng-select
-                [items]="skills"
-                bindLabel="name"
-                
-                formControlName="skills"
+                [items]="skills"formControlName="skils"
                 [multiple]="true"
                 dropdownPosition="auto"
               >
@@ -80,9 +77,13 @@
       
             <div>
               <label>Application Link / Contact / Walk-In address</label>
-              <input type="text" formControlName="applicationLink" />
+              <input type="text" formControlName="link" />
             </div>
       
+            <div>
+              <label for="image">Banner of the job</label>
+              <input type="file" id="image" (change)="onImageSelect($event)">
+            </div>
             <div>
               <button type="submit">Submit</button>
             </div>

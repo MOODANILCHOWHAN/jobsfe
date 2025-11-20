@@ -52,7 +52,26 @@ export class JobsListComponent implements OnInit,OnDestroy {
     this.http.get<any>(url,{ params: page }).subscribe({
       next:(res)=>{
         console.log(res)
-        this.jobList=res?.jobs;
+        // this.jobList=res?.jobs;
+        this.jobList = res?.jobs.map((i: { image: BlobPart; imageType: string; }) => {
+          // Check if the image exists
+          if (i.image) {
+            // Dynamically determine the image type (Assuming 'imageType' field exists or derive it)
+            const imageType = i.imageType || 'image/png';  // Use a default or dynamic type
+  
+            // Create a Blob from the image binary data
+            const blob = new Blob([i.image], { type: imageType });
+            
+            // Create a URL for the Blob object
+            const imageUrl = URL.createObjectURL(blob);
+  
+            // Return a new object with the image as a URL
+            return { ...i, image: imageUrl };  // Create a new object to avoid mutating the original data
+          }
+  
+          // If no image, return the job data as is
+          return i;
+        });
         this.page=res?.currentPage;
         this.totalJobs=res?.totalJobs        
       }
