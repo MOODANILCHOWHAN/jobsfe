@@ -1,5 +1,6 @@
 
 <div class="containers-div">
+  @if(!isLoading){
   <div class="main-section" >
     <div class="job-detail">
         <div>
@@ -73,37 +74,55 @@
     <img src="assets/images/mock.png">
   </div>
  
-    
+}
+@else{
+  <div style="display: flex;flex-direction: column; width: 100%;">
+  <div class="d-flex w-100 ">
+    <div class="shimmer w-45" style="height: 250px">
+
+    </div>
+    <div class="shimmer w-45" style="height: 250px"></div>
+  </div>
+  
+  <div class="shimmer w-100" style="height: 250px"></div>
+</div>
+}
 </div>
 
 <h4>Related Jobs</h4>
 <div class="suggestions">
-  @for( job of suggestion; track job){
-    <div class="job-suggestion borderss">
-      <div>
-        <img [src]="job.image ? job.image:'assets/Home/calendar.png'" style="width: 3.5rem; height: 3.5rem;">
+  @if(suggestion.length >0 ){
+    @for( job of suggestion; track job){
+      <div class="job-suggestion borderss">
+        <div>
+          <img [src]="job.image ? job.image:'assets/Home/calendar.png'" style="width: 3.5rem; height: 3.5rem;">
+        </div>
+        <div style="width: 160px;">
+            <span class="text-bolder">{{job.jobName}}</span>
+            <br>
+            <span class="text-bold">{{job.company}}</span>
+            <br>
+            <div class="details">
+              <div class="d-flex align-items-center gap-1">
+                <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">location_on</span>
+                <span>{{job.location}}</span>
+              </div>
+              <div class="d-flex align-items-center gap-1">
+                <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">schedule</span>
+                <span>{{job.jobType}}</span>
+              </div>
+              <div class="d-flex align-items-center gap-1">
+                <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">work_history</span>
+                <span>{{job.jobExperience < 2 ? 'Fresher' : 'Experience' }}</span>
+              </div>
+            </div>
+            
+        </div>
       </div>
-      <div style="width: 160px;">
-          <span class="text-bolder">{{job.jobName}}</span>
-          <br>
-          <span class="text-bold">{{job.company}}</span>
-          <br>
-          <div class="details">
-            <div class="d-flex align-items-center gap-1">
-              <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">location_on</span>
-              <span>{{job.location}}</span>
-            </div>
-            <div class="d-flex align-items-center gap-1">
-              <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">schedule</span>
-              <span>{{job.jobType}}</span>
-            </div>
-            <div class="d-flex align-items-center gap-1">
-              <span class="material-symbols-outlined" style="font-size: 1rem; color:#00B074 ;">work_history</span>
-              <span>{{job.jobExperience < 2 ? 'Fresher' : 'Experience' }}</span>
-            </div>
-          </div>
-          
-      </div>
-    </div>
+    }
   }
+  @else{
+    <div class="shimmer w-100" style="height: 250px"></div>
+  }
+
 </div>

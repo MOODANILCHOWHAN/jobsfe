@@ -12,6 +12,7 @@ export class JobsDetailsComponent {
 
   jobDetails:any;
   suggestion:any[]=[];
+  isLoading:boolean=false;
   constructor(private jobService:JobServicesService,private params:ActivatedRoute){
    
   }
@@ -52,12 +53,15 @@ export class JobsDetailsComponent {
     })
   }
   getDetails(filter:any){
+    this.isLoading=true;
     this.jobService.getJobDetails(filter).subscribe({
       next:(res)=>{
         console.log(res);
         this.jobDetails=res;
+        this.isLoading=false;
       },error:(err)=>{
-        console.log(err)
+        console.log(err);
+        this.isLoading=false;
       }
     })
   }

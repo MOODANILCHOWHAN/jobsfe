@@ -1,12 +1,17 @@
 {
-  "name": "job",
+  "name": "jobsfe",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:ssr:job": "node dist/jobsfe/server/server.mjs",
+    "build:ssr": "ng build && ng run jobsfe:server",
+    "serve:ssr": "node dist/jobsfe/server/server.mjs",
+    "prerender": "ng run jobsfe:prerender"
+
   },
   "private": true,
   "dependencies": {
@@ -19,11 +24,14 @@
     "@angular/material": "^17.3.10",
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/platform-server": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@angular/ssr": "^17.3.17",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@ng-select/ng-select": "^12.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.2",
+    "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -33,7 +41,9 @@
     "@angular/cli": "^17.3.0",
     "@angular/compiler-cli": "^17.3.0",
     "@angular/localize": "^17.3.0",
+    "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

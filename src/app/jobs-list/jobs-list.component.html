@@ -39,9 +39,13 @@
         }
       </div>
       <br>
-        <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalJobs" [(page)]="page"  (pageChange)="onPageChange($event)"/>
+        <ngb-pagination class="d-flex justify-content-center" [maxSize]="5"
+  [rotate]="true" [collectionSize]="totalJobs" [(page)]="page"  (pageChange)="onPageChange($event)"/>
     </ng-container>
     <ng-template #noJobs>
-        <p>No jobs found.</p>
+      @for (i of [].constructor(9); track i) {
+        <div class="shimmer"></div>
+      }
+      
     </ng-template>
 </div>
